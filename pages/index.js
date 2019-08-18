@@ -1,11 +1,11 @@
-import Btn from "../components/Btn";
+import Counter from "../components/Counter";
 
 export default () => {
   return (
     <>
       <div className="container">
         <h1>Counter</h1>
-        <Btn>Count!</Btn>
+        <Counter />
       </div>
 
       <style jsx>{`

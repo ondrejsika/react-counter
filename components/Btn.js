@@ -1,7 +1,9 @@
 export default props => {
   return (
     <>
-      <span className="btn">{props.children}</span>
+      <span onClick={props.onClick} className="btn">
+        {props.children}
+      </span>
       <style jsx>
         {`
           .btn {
