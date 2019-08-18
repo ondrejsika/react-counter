@@ -1,0 +1,8 @@
+.next
+node_modules
+*.log
+out
+package-lock.json
+report.*.json
+.DS_Store
+.idea
