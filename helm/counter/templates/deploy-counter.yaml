@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-counter
+  labels:
+    release: {{ .Release.Name }}-counter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      release: {{ .Release.Name }}-counter
+  template:
+    metadata:
+      labels:
+        release: {{ .Release.Name }}-counter
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}-counter
+          image: {{ .Values.image }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          env:
+          - name: REDIS_HOST
+            value: {{ .Release.Name }}-redis
+

@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-redis
+  labels:
+    release: {{ .Release.Name }}-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      release: {{ .Release.Name }}-redis
+  template:
+    metadata:
+      labels:
+        release: {{ .Release.Name }}-redis
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}-redis
+          image: redis
+          ports:
+            - name: redis
+              containerPort: 6379
+              protocol: TCP
