@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  counter:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: ${IMAGE:-registry.sikahq.com/zuz/counter}
+    environment:
+      REDIS_HOST: redis
+    depends_on:
+      - redis
+  redis:
+    image: redis
+
