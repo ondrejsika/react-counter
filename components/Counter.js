@@ -13,9 +13,17 @@ export default class Counter extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  async componentDidMount() {
+  async update() {
     const count = await get(this.origin);
     this.setState({ count: count });
+  }
+
+  async componentDidMount() {
+    await this.update();
+    this.interval = setInterval(() => this.update(), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   handleClick() {
